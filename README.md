@@ -2,7 +2,9 @@ jquery.inlineCss
 ================
 
 Read/Write/Remove __ONLY THE INLINE STYLES__ of a jQuery Element
+
 You can write values with  `!important` now, which jquery does not support natively.
+
 demo: http://jsbin.com/veyagikazavi/8/edit
 
 # Usage
