@@ -2,6 +2,8 @@ jquery.inlineCss
 ================
 
 Read/Write/Remove __ONLY THE INLINE STYLES__ of a jQuery Element
+You can write values with  `!important` now, which jquery does not support natively.
+demo: http://jsbin.com/veyagikazavi/8/edit
 
 # Usage
 Just like the usual `$el.css()` but __only__ applies on inline styles.
@@ -14,7 +16,6 @@ $el.inlineCss('z-index');
 ```
 
 ### To write:
-You can write using  `!important` now, which jquery does not support using the css() fn
 
 ```javascript
 // single property
