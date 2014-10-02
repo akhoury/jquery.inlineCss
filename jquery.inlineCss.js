@@ -15,7 +15,7 @@
 
                 if (value != null) {
                     this.attr('style', function(i, style) {
-                        style = $.trim((style || '').replace(new RegExp(property + '[^;]+;?', 'g'), ''));
+                        style = $.trim((style || '').replace(new RegExp('(?![^a-z\-])' + property + '[^;]+;?', 'g'), ''));
                         return value ? style + (style && style[style.length - 1] !== ';' ? ';' : '') + ' ' + property + ': ' + (typeof value === 'function' ? value.call(this, this.index(), this.inlineCss(property)): value) : style;
                     });
 
