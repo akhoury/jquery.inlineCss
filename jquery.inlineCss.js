@@ -14,6 +14,13 @@
 			return trim(style).replace(re, '$1');
 		};
 	    })();
+	    
+	    var negativeRe = /[a-z\-]/;
+	    var replaceStrAttrIterator = function(m, idx, str) {
+		/* when matching 'property:value' don't match 'prefixed-property:value', i.e. height and min-height
+		/* no RegExp negative lookbehind support in js :( */
+		return !str[idx - 1] || !negativeRe.test(str[idx - 1]) ? '' : m;
+	    };
 
 
             return function(property, value) {
@@ -29,7 +36,7 @@
 
                 if (value != null) {
                     this.attr('style', function(i, style) {
-                        style = cleanStyleAttr(style).replace(new RegExp('(?![^a-z\-])' + property + '[^;]+;?', 'g'), '');
+                        style = cleanStyleAttr(style).replace(new RegExp(property + '[^;]+;?', 'g'), replaceStrAttrIterator);
                         return value ? style + (style && style[style.length - 1] !== ';' ? ';' : '') + ' ' + property + ': ' + (typeof value === 'function' ? value.call(this, this.index(), this.inlineCss(property)): value) : style;
                     });
 
